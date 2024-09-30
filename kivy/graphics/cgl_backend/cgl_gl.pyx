@@ -248,7 +248,7 @@ cpdef link_static():
         cgl.glSampleCoverage = glSampleCoverage
         cgl.glScissor = glScissor
         # cgl.glShaderBinary = glShaderBinary
-        cgl.glShaderSource = glShaderSource
+        #cgl.glShaderSource = glShaderSource  # FIXME: `cgl_gl.c:3541:52: error: incompatible function pointer types assigning to 'void (*)(GLuint, GLsizei, const GLchar **, const GLint *)' (aka 'void (*)(unsigned int, int, const char **, const int *)') from 'void (GLuint, GLsizei, const GLchar *const *, const GLint *)' (aka 'void (unsigned int, int, const char *const *, const int *)') [-Wincompatible-function-pointer-types]`
         cgl.glStencilFunc = glStencilFunc
         cgl.glStencilFuncSeparate = glStencilFuncSeparate
         cgl.glStencilMask = glStencilMask

@@ -546,7 +546,7 @@ cdef extern from "SDL.h":
     cdef void SDL_Delay(Uint32 ms) nogil
     cdef Uint8 SDL_EventState(Uint32 type, int state)
     cdef int SDL_PollEvent(SDL_Event * event) nogil
-    cdef void SDL_SetEventFilter(SDL_EventFilter *filter, void* userdata)
+    cdef void SDL_SetEventFilter(SDL_EventFilter *filter, void* userdata)  # FIXME: This is now in `SDL_events.h` from/near version SDL2-2.28.5
     cdef SDL_RWops * SDL_RWFromFile(char *file, char *mode)
     cdef SDL_RWops * SDL_RWFromMem(void *mem, int size)
     cdef SDL_RWops * SDL_RWFromConstMem(void *mem, int size)

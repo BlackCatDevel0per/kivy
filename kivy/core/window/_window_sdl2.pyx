@@ -212,7 +212,7 @@ cdef class _WindowSDL2Storage:
 
         SDL_SetHintWithPriority(b'SDL_ANDROID_TRAP_BACK_BUTTON', b'1',
                                 SDL_HINT_OVERRIDE)
-        
+
         # makes dpi aware of scale changes
         if platform == "win":
             SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, b"1")
@@ -256,8 +256,8 @@ cdef class _WindowSDL2Storage:
         # it's a config property like e.g. fullscreen
         config_shaped = Config.getint('graphics', 'shaped')
 
-        # Due to the uncertainty regarding the window's capability for shaping 
-        # and multisampling, we iterate through all possible combinations in 
+        # Due to the uncertainty regarding the window's capability for shaping
+        # and multisampling, we iterate through all possible combinations in
         # the most correct order:
         # 1. Shaped window with multisampling
         # 2. Shaped window without multisampling
@@ -315,7 +315,7 @@ cdef class _WindowSDL2Storage:
         for joy_i in range(SDL_NumJoysticks()):
             SDL_JoystickOpen(joy_i)
 
-        SDL_SetEventFilter(<SDL_EventFilter *>_event_filter, <void *>self)
+        SDL_SetEventFilter(_event_filter, <void *>self)
 
         SDL_EventState(SDL_DROPFILE, SDL_ENABLE)
         SDL_EventState(SDL_DROPTEXT, SDL_ENABLE)
