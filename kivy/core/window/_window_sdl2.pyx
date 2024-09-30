@@ -325,6 +325,27 @@ cdef class _WindowSDL2Storage:
         SDL_GetWindowSize(self.win, &w, &h)
         return w, h
 
+    def _set_relative_mouse_mode(self, enable):
+        return <int>SDL_SetRelativeMouseMode(SDL_TRUE if enable else SDL_FALSE)
+
+    property relative_mouse_mode:
+        def __get__(self):
+            return <SDL_bool> SDL_GetRelativeMouseMode()
+
+        def __set__(self, enable):
+            self._set_relative_mouse_mode(enable)
+
+    def warp_win_mouse_glob(self, int x, int y):
+        SDL_WarpMouseGlobal(x, y)
+
+    def warp_win_mouse(self, int x, int y):
+        SDL_WarpMouseInWindow(self.win, x, y)
+
+    def get_relative_mouse_state(self):
+        cdef int xrel, yrel = 0
+        SDL_GetRelativeMouseState(&xrel, &yrel)
+        return xrel, yrel
+
     def _set_cursor_state(self, value):
         SDL_ShowCursor(value)
 
