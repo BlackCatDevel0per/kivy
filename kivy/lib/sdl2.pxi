@@ -13,6 +13,15 @@ cdef extern from "SDL_joystick.h":
     cdef int SDL_HAT_DOWN = 0x04
     cdef int SDL_HAT_LEFT = 0x08
 
+cdef extern from "SDL_mouse.h":
+    ctypedef unsigned long Uint32
+
+    cdef void SDL_WarpMouseInWindow(SDL_Window * window, int x, int y)
+    cdef int SDL_WarpMouseGlobal(int x, int y)
+    cdef int SDL_SetRelativeMouseMode(SDL_bool enabled)
+    cdef SDL_bool SDL_GetRelativeMouseMode()
+    cdef Uint32 SDL_GetRelativeMouseState(int *x, int *y)
+
 cdef extern from "SDL.h":
     ctypedef unsigned char Uint8
     ctypedef unsigned long Uint32
